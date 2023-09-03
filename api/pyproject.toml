@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "api"
+version = "0.0.1"
+description = "API para Proyecto Final curso Desarrollo Web Universidad Mariano Galvez de Guatemala"
+authors = ["Luis Pérez <luis.perez@protonmail.com>", "Mónica Ranchos <monica.ranchos@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.103.0"
+uvicorn = "^0.23.2"
+sqlalchemy = "^2.0.20"
+pymysql = "^1.1.0"
+python-dotenv = "^1.0.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
