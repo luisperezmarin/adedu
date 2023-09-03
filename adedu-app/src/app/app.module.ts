@@ -13,6 +13,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { LoginComponent } from './login/login.component';
+import { MatDividerModule} from '@angular/material/divider';
+
 
 @NgModule({
   declarations: [
@@ -20,6 +23,7 @@ import { MatButtonModule } from '@angular/material/button';
     HomeComponent,
     CrearUsuarioComponent,
     HeaderComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,6 +36,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatInputModule,
     FormsModule,
     MatButtonModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent],
