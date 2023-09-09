@@ -4,7 +4,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { CrearUsuarioComponent } from './crear-usuario/crear-usuario.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -12,13 +11,7 @@ import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    CrearUsuarioComponent,
-    HeaderComponent,
-    LoginComponent,
-  ],
+  declarations: [AppComponent, HomeComponent, HeaderComponent, LoginComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
