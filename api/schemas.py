@@ -51,6 +51,8 @@ class UsuarioBase(BaseModel):
     Nombres: str
     Apellidos: str
     Edad: int
+    Correo: str
+    Password: str
     RolID: int
 
 

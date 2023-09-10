@@ -27,9 +27,11 @@ class Grado(Base):
 
 class Usuario(Base):
     __tablename__ = "Usuarios"
-    ID = Column(Integer, primary_key=True, autoincrement=True)
+    ID = Column(Integer, primary_key=True, autoincrement=True, index=True)
     Nombres = Column(String(255), nullable=False)
     Apellidos = Column(String(255), nullable=False)
+    Correo = Column(String(255), nullable=False, unique=True, index=True)
+    Password = Column(String(255), nullable=False)
     Edad = Column(Integer)
     RolID = Column(Integer, ForeignKey("Roles.ID"))
     Rol = relationship("Rol", backref="usuarios")
@@ -59,25 +61,9 @@ class Encargado(Base):
     AlumnosACargo = relationship("Alumno", back_populates="Encargado")
 
 
-class Alumno(Base):
-    __tablename__ = "Alumnos"
-    ID = Column(Integer, primary_key=True, autoincrement=True)
-    UsuarioID = Column(Integer, ForeignKey("Usuarios.ID"))
-    GradoID = Column(
-        Integer, ForeignKey("Grados.ID")
-    )  # Clave externa que referencia al Grado asignado
-    TareasAsignadas = Column(Integer)
-    Usuario = relationship("Usuario", backref="alumno")
-    Grado = relationship("Grado", backref="alumno")
-    EncargadoID = Column(
-        Integer, ForeignKey("Encargados.ID")
-    )  # Clave externa que referencia al Encargado del Alumno
-    Encargado = relationship("Encargado", back_populates="AlumnosACargo")
-
-
 class Tarea(Base):
     __tablename__ = "Tareas"
-    ID = Column(Integer, primary_key=True, autoincrement=True)
+    ID = Column(Integer, primary_key=True, autoincrement=True, index=True)
     DocenteID = Column(
         Integer, ForeignKey("Docentes.ID")
     )  # Clave externa que referencia al Docente que crea la tarea
@@ -88,6 +74,22 @@ class Tarea(Base):
     Descripcion = Column(Text)
     FechaCreacion = Column(Date, nullable=False)
     FechaExpiracion = Column(Date, nullable=False)
+
+
+class Alumno(Base):
+    __tablename__ = "Alumnos"
+    ID = Column(Integer, primary_key=True, autoincrement=True)
+    UsuarioID = Column(Integer, ForeignKey("Usuarios.ID"))
+    GradoID = Column(
+        Integer, ForeignKey("Grados.ID")
+    )  # Clave externa que referencia al Grado asignado
+    TareasAsignadas = Column(Integer, ForeignKey("Tareas.ID"))
+    Usuario = relationship("Usuario", backref="alumno")
+    Grado = relationship("Grado", backref="alumno")
+    EncargadoID = Column(
+        Integer, ForeignKey("Encargados.ID")
+    )  # Clave externa que referencia al Encargado del Alumno
+    Encargado = relationship("Encargado", back_populates="AlumnosACargo")
 
 
 # Tabla intermedia para la relación muchos a muchos entre Tareas y Alumnos
