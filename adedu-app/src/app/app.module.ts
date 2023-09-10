@@ -6,12 +6,19 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
+import { RegistroComponent } from './registro/registro.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 import { AngularMaterialModule } from './angular-material.module';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, LoginComponent, HeaderComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    LoginComponent,
+    HeaderComponent,
+    RegistroComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

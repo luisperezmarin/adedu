@@ -1,33 +1,30 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { MatSelectModule } from '@angular/material/select';
-import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatButtonModule } from '@angular/material/button';
-import { MatGridListModule } from '@angular/material/grid-list';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { PerfilesService } from '../service/perfiles.service';
+import { UsuariosService } from '../service/usuarios.service';
 
 @Component({
   selector: 'app-registro',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatIconModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatInputModule,
-    MatButtonModule,
-    MatGridListModule,
-  ],
   templateUrl: './registro.component.html',
   styleUrls: ['./registro.component.css'],
 })
-export class RegistroComponent {
+export class RegistroComponent implements OnInit {
   hide: boolean = true;
   data: any[] = [];
+  @Input() usuarioObj = {
+    Nombres: '',
+    Apellidos: '',
+    Edad: 4,
+    Correo: '',
+    Password: '',
+    RolID: 1,
+  };
 
-  constructor(private apiService: PerfilesService) {}
+  constructor(
+    private apiService: PerfilesService,
+    private usuarioService: UsuariosService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.llenarData();
@@ -38,5 +35,14 @@ export class RegistroComponent {
       this.data = data;
       console.log(this.data);
     });
+  }
+  agregarUsuario(data: any) {
+    console.log(this.usuarioObj);
+    this.usuarioService
+      .agregarUsuario(this.usuarioObj)
+      .subscribe((data: {}) => {
+        this.router.navigate(['/']);
+        alert('Usuario agregado correctamente');
+      });
   }
 }

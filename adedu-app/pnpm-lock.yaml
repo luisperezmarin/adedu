@@ -58,6 +58,9 @@ devDependencies:
   '@angular/compiler-cli':
     specifier: ^16.2.4
     version: 16.2.4(@angular/compiler@16.2.4)(typescript@5.1.6)
+  '@schematics/angular':
+    specifier: ^16.2.1
+    version: 16.2.1
   '@types/jasmine':
     specifier: ~4.3.5
     version: 4.3.5
