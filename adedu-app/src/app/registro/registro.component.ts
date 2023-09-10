@@ -9,7 +9,7 @@ import { UsuariosService } from '../service/usuarios.service';
   styleUrls: ['./registro.component.css'],
 })
 export class RegistroComponent implements OnInit {
-  hide: boolean = true;
+  ocultar: boolean = true;
   data: any[] = [];
   @Input() usuarioObj = {
     Nombres: '',

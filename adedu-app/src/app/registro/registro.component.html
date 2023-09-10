@@ -26,17 +26,17 @@
         <input
           [(ngModel)]="usuarioObj.Password"
           matInput
-          [type]="hide ? 'password' : 'text'"
+          [type]="ocultar ? 'password' : 'text'"
           required
         />
         <button
           mat-icon-button
           matSuffix
-          (click)="hide = !hide"
-          [attr.aria-label]="'Hide password'"
-          [attr.aria-pressed]="hide"
+          (click)="ocultar = !ocultar"
+          [attr.aria-label]="'Ocultar contraseña'"
+          [attr.aria-pressed]="ocultar"
         >
-          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+          <mat-icon>{{ ocultar ? "visibility_off" : "visibility" }}</mat-icon>
         </button>
       </mat-form-field>
       <br />
