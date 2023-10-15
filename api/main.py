@@ -71,10 +71,10 @@ async def create_user(user: UsuarioBase, db: db_dependency):
 
 @app.get("/usuarios/{user_id}", status_code=status.HTTP_200_OK)
 async def read_user(user_id: int, db: db_dependency):
-    user = db.query(Usuario).filter(Usuario.id == user_id).first()
+    user = db.query(Usuario).filter(Usuario.ID == user_id).first()
     if user is None:
         raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND, detail="Usuario not found"
+            status_code=status.HTTP_404_NOT_FOUND, detail="Usuario no encontrado"
         )
     return user
 
